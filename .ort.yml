@@ -107,6 +107,12 @@ resolutions:
     - message: ".*license LicenseRef-scancode-sun-prop-non-commercial in Maven:org.apache.geronimo.specs:geronimo-jta_1.*"
       reason: "LICENSE_ACQUIRED_EXCEPTION"
       comment: "These refer to such older versions schema files contained in the source distribution which are not used and distributed, therefore the license is complied with."
+    - message: ".*license LicenseRef-scancode-sun-prop-non-commercial in Maven:org.apache.xmlbeans:xmlbeans:5.*"
+      reason: "LICENSE_ACQUIRED_EXCEPTION"
+      comment: "These refer to such older versions schema files (in tags 1.0.0 - 1.0.1) contained in the source distribution which are not used and distributed, therefore the license is complied with."
+    - message: "commercial license LicenseRef-scancode-proprietary-license in Maven:org.apache.xmlbeans:xmlbeans:5.1.*"
+      reason: "LICENSE_ACQUIRED_EXCEPTION"
+      comment: "These refer to such older versions schema and other files (in tag 1.0.0 and tags 2.0.0 - 2.6.0) contained in the source distribution which are not used and distributed, therefore the license is complied with."
 
 license_choices:
   repository_license_choices:
