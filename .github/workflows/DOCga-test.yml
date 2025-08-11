@@ -1,0 +1,33 @@
+# .github/workflows/DOCga-test.yml
+# This workflow tests the connection to the ORT Server using the OSC CLI
+# and verifies that the authentication works by listing runs.
+# You can run this workflow manually from the Actions tab.
+# You can also add more commands to interact with your ORT Server.
+# Make sure to set the required variables and secrets in your repository settings.
+
+name: 'Test ORT Server Connection'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-osc-connection:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v4
+
+      - name: 'Setup and Authenticate ORT Server CLI'
+        uses: eclipse-apoapsis/actions/setup-osc@main
+        with:
+          url: ${{ vars.OSC_INSTANCE_URL }}
+          client-id: ${{ vars.OSC_CLIENT_ID }}
+          username: ${{ vars.OSC_USERNAME }}
+          password: ${{ secrets.OSC_PASSWORD }}
+
+      - name: 'Verify authentication by listing runs'
+        run: osc runs info --run-id=981
+      # You can add more commands here to interact with your ORT Server
+      # - name: 'Create a new run'
+      #   run: runs start --wait --repository-id XXX --parameters=XXX
