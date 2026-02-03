@@ -30,15 +30,17 @@ jobs:
 
       # 3. Download the Reports
       - name: Download Reports
+        if: ${{ always() }}
         run: |
           osc runs download reports
         env:
           # Define the specific reports you want to download
-          OSC_DOWNLOAD_REPORTS_FILE_NAMES: 'scan-report-web-app.html,scan-report-cyclonedx.json'
+          OSC_DOWNLOAD_REPORTS_FILE_NAMES: 'scan-report-web-app.html'
           OSC_DOWNLOAD_REPORTS_OUTPUT_DIR: './reports'
 
       # 4. Upload Reports to GitHub Artifacts
       - name: Upload Artifacts
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: compliance-reports
